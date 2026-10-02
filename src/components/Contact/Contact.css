@@ -1,0 +1,17 @@
+.contact { position: relative; overflow: hidden; background: radial-gradient(circle 38vmax at var(--mx, 50%) var(--my, 60%), color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%); }
+.contact__inner { padding: 8vh var(--pad) 10vh; display: grid; gap: 8vh; }
+.contact__title { font-size: clamp(3.6rem, 18.5vw, 26rem); line-height: 0.82; font-weight: 900; }
+.contact__line { display: block; white-space: nowrap; }
+.contact__line .word { overflow: visible; padding: 0; margin: 0; }
+.contact__line .char { color: color-mix(in srgb, var(--accent) calc(var(--hot, 0) * 100%), var(--fg)); transition: color 0.12s linear; }
+.contact__row { display: flex; justify-content: space-between; align-items: center; gap: 3rem; flex-wrap: wrap; }
+.contact__start {
+  display: grid; place-items: center; width: clamp(150px, 16vw, 230px); aspect-ratio: 1; border-radius: 50%;
+  background: var(--accent); color: var(--on-accent); font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; text-align: center;
+  transition: background-color 0.4s, color 0.4s; will-change: transform;
+}
+.contact__start:hover { background: var(--fg); color: var(--bg); }
+.contact__start span { padding: 1rem; }
+.contact__links { display: grid; gap: 0.2rem; text-align: right; }
+.contact__link { font-size: clamp(2.2rem, 5vw, 5rem); line-height: 1; display: inline-flex; align-items: center; min-height: 44px; }
+@media (max-width: 767px) { .contact__row { flex-direction: column; align-items: flex-start; } .contact__links { text-align: left; } }

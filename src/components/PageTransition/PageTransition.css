@@ -1,0 +1,4 @@
+.pt { position: fixed; inset: 0; z-index: 9700; display: flex; pointer-events: none; visibility: hidden; opacity: 0; }
+.pt__col { flex: 1; background: var(--accent); transform: scaleY(0); backdrop-filter: blur(6px); }
+.pt__label { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; color: var(--on-accent); font-size: clamp(3rem, 14vw, 14rem); }
+.pt__label span { display: block; }

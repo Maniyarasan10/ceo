@@ -1,0 +1,56 @@
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 8500; display: flex; justify-content: flex-end; align-items: center;
+  padding: 1.1rem var(--pad); pointer-events: none;
+}
+.nav > * { pointer-events: auto; }
+.nav__links {
+  display: flex; gap: 0.25rem; padding: 0.35rem; border-radius: 999px; border: 1px solid transparent;
+  transition: background-color 0.5s, border-color 0.5s, backdrop-filter 0.5s, padding 0.5s var(--ease-out);
+}
+.is-compact .nav__links { background: color-mix(in srgb, var(--bg) 72%, transparent); border-color: var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.nav__link {
+  position: relative; padding: 0.55rem 1rem; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em;
+  text-transform: uppercase; border-radius: 999px; transition: letter-spacing 0.5s var(--ease-out), color 0.3s, background-color 0.3s;
+}
+.nav__roll { display: block; overflow: hidden; height: 1.2em; line-height: 1.2; }
+.nav__roll span { display: block; transition: transform 0.5s var(--ease-out); }
+.nav__link:hover .nav__roll span, .nav__link:focus-visible .nav__roll span { transform: translateY(-100%); }
+.is-compact .nav__link { letter-spacing: 0.02em; }
+.nav__link.is-active { background: var(--accent); color: var(--on-accent); }
+/* Hamburger: 44px circular tap target holding three bars that fold into an X when
+   the menu opens. Kept a real pill (not borderless) so it stays legible over the
+   hero image, and the name lives on aria-label since the glyph is decorative. */
+.nav__burger {
+  display: none; align-items: center; justify-content: center; width: 44px; min-width: 44px;
+  height: 44px; min-height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 999px;
+  color: var(--fg); background: color-mix(in srgb, var(--bg) 70%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.3s, background-color 0.3s;
+}
+.nav__burger:hover { border-color: var(--fg); }
+.nav__burgerBox { display: grid; gap: 5px; width: 20px; }
+.nav__burgerBox i { display: block; height: 1.5px; background: var(--fg); transition: transform 0.35s var(--ease-out), opacity 0.2s linear, width 0.35s var(--ease-out); }
+.nav__burgerBox i:nth-child(2) { width: 66%; justify-self: center; }
+/* 3 bars of 1.5px on 5px gaps sit 6.5px apart centre-to-centre, so that is the
+   offset needed to collapse the outer two onto the middle and form the X. */
+.nav__burger.is-open .nav__burgerBox i:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav__burger.is-open .nav__burgerBox i:nth-child(2) { opacity: 0; width: 0; }
+.nav__burger.is-open .nav__burgerBox i:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.menu {
+  position: fixed; inset: 0; z-index: 8400; background: var(--bg); padding: 6rem var(--pad) var(--pad);
+  display: none; flex-direction: column; justify-content: space-between; clip-path: inset(0 0 100% 0);
+}
+.menu ul { display: grid; gap: 0.2rem; }
+.menu__link { display: flex; align-items: baseline; gap: 1rem; font-size: clamp(3.4rem, 17vw, 8rem); overflow: hidden; }
+.menu__link em { font-style: normal; color: var(--accent); }
+.menu__link span { display: block; }
+
+@media (max-width: 899px) {
+  .nav__links { display: none; }
+  .nav__burger { display: inline-flex; align-items: center; justify-content: center; }
+  .menu { display: flex; }
+  .menu__link { font-size: min(clamp(2.9rem, 15.5vw, 8rem), 14svh); min-height: 44px; }
+  .menu ul { gap: 0.1rem; }
+  .menu { padding-top: 5.5rem; padding-bottom: max(var(--pad), env(safe-area-inset-bottom)); overflow-y: auto; overscroll-behavior: contain; }
+}

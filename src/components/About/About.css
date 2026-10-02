@@ -1,0 +1,60 @@
+.about { position: relative; }
+.about__statement { min-height: 100svh; padding: 6rem var(--pad) var(--pad); display: flex; flex-direction: column; justify-content: space-between; }
+.about__meta { display: flex; justify-content: space-between; }
+.about__big { font-size: clamp(3.2rem, 11.5vw, 13rem); line-height: 0.88; max-width: 14ch; }
+.about__big .word { display: inline-block; margin-right: 0.18em; padding-right: 0; overflow: visible; }
+.about__big .char { display: inline-block; color: color-mix(in srgb, var(--accent) calc(var(--hot, 0) * 100%), var(--fg)); transition: color 0.12s linear; will-change: transform; }
+.about__sub { max-width: 46ch; font-size: clamp(1rem, 1.4vw, 1.3rem); color: var(--mute); align-self: flex-end; }
+
+.about__domains { overflow: hidden; padding: 4vh 0; border-block: 1px solid var(--line); display: grid; gap: 0.5rem; }
+.about__row { display: flex; width: max-content; font-size: clamp(4rem, 13vw, 14rem); white-space: nowrap; will-change: transform; }
+.about__domain { padding-right: 0.25em; transition: color 0.3s; }
+.about__domain i { font-style: normal; color: var(--accent); padding-left: 0.25em; }
+.about__domain.is-outline { color: transparent; -webkit-text-stroke: 1px var(--fg); }
+.about__domain:hover { color: var(--accent); -webkit-text-stroke-color: var(--accent); }
+
+.about__pipeline { padding: 12vh var(--pad); }
+.about__pipehead { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; margin-bottom: 6vh; }
+
+.pipe { position: relative; }
+.pipe__track { position: absolute; left: 0; right: 0; top: 11px; height: 1px; background: var(--line); }
+.pipe__fill { position: absolute; inset: 0; background: var(--accent); transform-origin: left; transform: scaleX(var(--p)); transition: transform 0.8s var(--ease-out); }
+.pipe__packet { position: absolute; top: -5px; left: calc(var(--p) * 100%); width: 11px; height: 11px; margin-left: -5px; background: var(--accent); transition: left 0.8s var(--ease-out); box-shadow: 0 0 24px var(--accent); transform: rotate(45deg); }
+.pipe__nodes { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
+.pipe__node { display: grid; gap: 0.5rem; padding-top: 0; text-align: left; width: 100%; min-height: 44px; }
+.pipe__dot { width: 23px; height: 23px; border: 1px solid var(--line); background: var(--bg); transition: border-color 0.3s, background-color 0.3s; }
+.pipe__node.is-done .pipe__dot { border-color: var(--accent); }
+.pipe__node.is-on .pipe__dot { border-color: var(--accent); }
+.pipe__label { font-size: clamp(1.8rem, 5.5vw, 6rem); color: var(--mute); transition: color 0.3s, transform 0.5s var(--ease-out); margin-top: 0.8rem; }
+.pipe__node.is-on .pipe__label { color: var(--fg); transform: translateX(6px); }
+.pipe__node:hover .pipe__label { color: var(--fg); }
+.pipe__desc { margin-top: 3rem; max-width: 52ch; font-size: clamp(1.05rem, 1.5vw, 1.4rem); min-height: 4.5em; }
+
+@media (max-width: 899px) {
+  /* Keep the statement a full screen, but anchor the headline near the top and let the
+     supporting copy settle at the bottom instead of floating in two large voids.
+     Padding and gap are height-relative so short phones still fit everything on screen. */
+  .about__statement {
+    min-height: 100svh;
+    padding: clamp(4.5rem, 12svh, 6.5rem) var(--pad) clamp(2rem, 5svh, 2.5rem);
+    justify-content: flex-start; gap: clamp(2.25rem, 6svh, 7vh);
+  }
+  .about__sub { margin-top: auto; align-self: flex-start; }
+}
+
+/* very narrow phones: the display size has to give, or the statement runs past the fold */
+@media (max-width: 360px) {
+  .about__big { font-size: clamp(2.7rem, 12.5vw, 13rem); }
+}
+
+@media (max-width: 767px) {
+  .pipe__track { left: 11px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
+  .pipe__fill { transform: scaleY(var(--p)); transform-origin: top; }
+  .pipe__packet { left: -5px; margin-left: 0; top: calc(var(--p) * 100%); transition: top 0.8s var(--ease-out); }
+  /* Stacked stages need real breathing room. At 0.2rem the 2.4-4rem labels sat
+     ~3px apart and read as one block; this keeps each stage legible as its own row
+     and gives the vertical rail and packet room to read as a connector. */
+  .pipe__nodes { grid-template-columns: 1fr; gap: clamp(1.75rem, 6.5vw, 3rem); }
+  .pipe__node { grid-template-columns: 23px 1fr auto; align-items: center; gap: 1rem; }
+  .pipe__label { margin-top: 0; font-size: clamp(2.4rem, 12vw, 4rem); }
+}

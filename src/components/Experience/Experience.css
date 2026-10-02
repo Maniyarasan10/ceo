@@ -1,0 +1,28 @@
+.exp2 { position: relative; }
+.exp2__body { padding: 0 var(--pad); }
+.exp2__year { display: none; font-size: clamp(5rem, 22vw, 9rem); color: var(--accent); }
+.exp2__stage { padding: 3rem 0; border-bottom: 1px solid var(--line); display: grid; gap: 1.2rem; }
+.exp2__yearwin { display: none; }
+.exp2__blurb { color: var(--mute); max-width: 40ch; }
+.exp2__items { display: grid; gap: 1.2rem; margin-top: 0.5rem; }
+.exp2__items li { display: grid; gap: 0.2rem; padding-top: 0.8rem; border-top: 1px solid var(--line); }
+.exp2__items .mono { color: var(--accent); }
+.exp2__items p { max-width: 46ch; }
+.exp2__line { display: none; }
+.exp2 .exp2__year { display: block; }
+
+@media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .exp2.is-pinned .exp2__pin { height: 100svh; display: flex; flex-direction: column; }
+  .exp2.is-pinned .exp2__pin .sec-head { margin-top: 5rem; }
+  .exp2.is-pinned .exp2__body { flex: 1; display: grid; grid-template-columns: 1.3fr 1fr; gap: 4vw; align-items: center; min-height: 0; }
+  .exp2.is-pinned .exp2__yearwin { display: block; height: clamp(9rem, 38vw, 34rem); overflow: hidden; }
+  .exp2.is-pinned .exp2__years { display: flex; flex-direction: column; font-size: clamp(9rem, 38vw, 34rem); line-height: 1; will-change: transform; }
+  .exp2.is-pinned .exp2__years span { display: block; height: 100%; flex: none; line-height: 0.92; }
+  .exp2.is-pinned .exp2__years span:last-child { color: var(--accent); }
+  .exp2.is-pinned .exp2__stages { position: relative; height: 62vh; padding-left: 2rem; }
+  .exp2.is-pinned .exp2__year { display: none; }
+  .exp2.is-pinned .exp2__line { display: block; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--accent); transform: scaleY(0); transform-origin: top; }
+  .exp2.is-pinned .exp2__stages::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line); }
+  .exp2.is-pinned .exp2__stage { position: absolute; inset: 0 0 auto 2rem; border: 0; padding: 0; align-content: center; height: 100%; opacity: 0; transform: translateY(40px); clip-path: inset(0 0 100% 0); transition: opacity 0.6s, transform 0.9s var(--ease-out), clip-path 0.9s var(--ease-out); pointer-events: none; }
+  .exp2.is-pinned .exp2__stage.is-active { opacity: 1; transform: none; clip-path: inset(0 0 0 0); pointer-events: auto; transition-delay: 0.25s; }
+}

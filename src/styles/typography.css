@@ -1,0 +1,41 @@
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.86;
+  letter-spacing: -0.005em;
+}
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--mute);
+}
+.h-xl { font-size: clamp(3.4rem, 13vw, 15rem); }
+.h-lg { font-size: clamp(2.6rem, 8vw, 9rem); }
+.h-md { font-size: clamp(2rem, 4.6vw, 5rem); }
+
+/* split text */
+.word { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.06em 0 0.1em; margin: -0.06em 0 -0.1em; }
+.char { display: inline-block; will-change: transform; }
+.space { display: inline-block; width: 0.28em; }
+
+/* underline animation */
+.u-link { position: relative; display: inline-block; }
+.u-link::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -0.1em; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: right;
+  transition: transform 0.5s var(--ease-out);
+}
+.u-link:hover::after, .u-link:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+
+/* touch: make small inline links into real tap targets */
+@media (hover: none), (pointer: coarse) {
+  .u-link { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* section header: thin rule + metadata */
+.sec-head {
+  display: flex; justify-content: space-between; gap: 1rem; align-items: baseline;
+  padding: 1rem var(--pad); border-top: 1px solid var(--line);
+}

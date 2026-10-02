@@ -1,0 +1,63 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; background: var(--bg); }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 1rem; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; overflow-x: clip;
+  transition: background-color 0.6s var(--ease-io), color 0.6s var(--ease-io);
+}
+body.is-loading { overflow: hidden; }
+img, svg, canvas { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; text-align: inherit; }
+ul { list-style: none; }
+::selection { background: var(--accent); color: var(--on-accent); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.skip-link {
+  position: fixed; top: -100px; left: var(--pad); z-index: 10000; padding: 0.9rem 1.1rem;
+  background: var(--accent); color: var(--on-accent); font-family: var(--font-mono); font-size: 0.8rem;
+}
+.skip-link:focus { top: 1rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+html.has-cursor, html.has-cursor * { cursor: none !important; }
+
+.grain {
+  position: fixed; inset: -50%; z-index: 9000; pointer-events: none; opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 0.9s steps(6) infinite; mix-blend-mode: overlay;
+}
+@keyframes grain {
+  0% { transform: translate(0, 0); } 20% { transform: translate(-3%, 2%); } 40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); } 80% { transform: translate(3%, 3%); } 100% { transform: translate(0, 0); }
+}
+.gridlines {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; display: grid;
+  grid-template-columns: repeat(12, 1fr); padding: 0 var(--pad); opacity: 0.5;
+}
+.gridlines span { border-left: 1px solid var(--line); }
+.gridlines span:last-child { border-right: 1px solid var(--line); }
+@media (max-width: 767px) {
+  .gridlines { grid-template-columns: repeat(4, 1fr); }
+  .gridlines span:nth-child(n+5) { display: none; }
+  .gridlines span:nth-child(4) { border-right: 1px solid var(--line); }
+}
+
+main, footer { position: relative; z-index: 1; }
+
+/* A full-screen dialog lives inside `main` (z-index: 1), so the fixed chrome cannot
+   out-paint it by z-index alone. Hide the chrome while a dialog owns the screen. */
+html.has-dialog .nav,
+html.has-dialog .hud__mode,
+html.has-dialog .hud__coords,
+html.has-dialog .hud__progress,
+html.has-dialog .grain { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  .grain { display: none; }
+}

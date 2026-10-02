@@ -1,0 +1,3 @@
+.footer { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom)); }
+.footer__row { display: flex; justify-content: space-between; gap: 1rem 2rem; flex-wrap: wrap; padding: 1.5rem var(--pad) 0.5rem; color: var(--fg); }
+.footer__row b { font-weight: 500; color: var(--accent); }

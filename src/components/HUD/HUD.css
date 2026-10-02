@@ -1,0 +1,22 @@
+.hud__progress { position: fixed; left: 0; top: 0; bottom: 0; width: 2px; z-index: 8000; background: transparent; pointer-events: none; }
+.hud__progress span { display: block; height: 100%; background: var(--accent); transform: scaleY(0); transform-origin: top; }
+.hud__mode, .hud__coords { position: fixed; bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 8000; color: #fff; }
+/* The mode toggle is a real control, so it stops relying on blend mode: difference
+   and carries its own --bg chip instead. Contrast is then guaranteed by the theme
+   (18.4:1 dark, 11.3:1 blueprint) no matter what scrolls underneath it. */
+.hud__mode {
+  left: var(--pad); display: flex; align-items: center; gap: 0.5rem;
+  min-height: 44px; padding: 0 0.9rem; border-radius: 999px;
+  background: var(--bg); border: 1px solid var(--line); color: var(--fg);
+  font: inherit; cursor: pointer;
+}
+.hud__coords { right: var(--pad); display: flex; gap: 1.2rem; pointer-events: none; mix-blend-mode: difference; }
+.hud__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 1.8s ease-in-out infinite; mix-blend-mode: normal; }
+@keyframes pulse { 50% { opacity: 0.3; transform: scale(0.7); } }
+
+/* Mobile: drop the SYS/DARK indicator and the percentage readout. They sit in the
+   same corner cluster as the page content and the blueprint easter-egg toggle has
+   no room to breathe on a phone. The thin scroll-progress line is kept. */
+@media (max-width: 899px) {
+  .hud__mode, .hud__coords { display: none; }
+}

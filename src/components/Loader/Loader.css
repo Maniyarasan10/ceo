@@ -1,0 +1,12 @@
+.loader {
+  position: fixed; inset: 0; z-index: 9800; background: var(--bg); color: var(--fg);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: var(--pad); clip-path: inset(0 0 0 0);
+}
+.loader__list { overflow: hidden; display: grid; gap: 0.35rem; }
+.loader__row { color: var(--mute); transition: color 0.3s; font-size: 0.8rem; }
+.loader__row.is-on { color: var(--fg); }
+.loader__row.is-on span { color: var(--accent); }
+.loader__count { font-size: clamp(7rem, 30vw, 30rem); line-height: 0.8; overflow: hidden; align-self: flex-end; font-variant-numeric: tabular-nums; }
+.loader__bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--line); }
+.loader__bar span { display: block; height: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; }

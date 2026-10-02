@@ -1,0 +1,78 @@
+.hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: space-between; padding: 5.5rem var(--pad) var(--pad); overflow: clip; }
+.hero__bg { position: absolute; inset: 0; z-index: 0; display: grid; place-items: center; }
+.hero__shots { position: absolute; inset: 0; overflow: hidden; opacity: var(--shot-alpha, 0.26); }
+.hero__shot {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;
+  opacity: 0; transform: scale(1.12); will-change: opacity, transform;
+  transition: opacity 1.6s var(--ease-io), transform 9s linear;
+}
+.hero__shot.is-on { opacity: 1; transform: scale(1); }
+.hero__scrim {
+  position: absolute; inset: 0;
+  background: radial-gradient(130% 100% at 50% 45%, color-mix(in srgb, var(--bg) 26%, transparent), color-mix(in srgb, var(--bg) 86%, transparent) 80%);
+}
+/* keeps the site-wide gridlines visible over the full-bleed imagery */
+.hero__grid { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(12, 1fr); padding: 0 var(--pad); opacity: 0.5; }
+.hero__grid span { border-left: 1px solid var(--line); }
+.hero__grid span:last-child { border-right: 1px solid var(--line); }
+@media (prefers-reduced-motion: reduce) {
+  .hero__shot { transition: none; transform: none; }
+}
+.hero__meta { position: relative; z-index: 2; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.hero__status { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--fg); }
+.hero__status i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 1.8s ease-in-out infinite; }
+/* 5.1525em is the measured width of "MANIYARASAN" in the display face */
+.hero__title { position: relative; z-index: 2; font-size: min(30rem, calc((100vw - 2 * var(--pad)) / 5.1525)); line-height: 0.8; font-weight: 900; mix-blend-mode: normal; pointer-events: none; will-change: transform; }
+.hero__line { display: block; overflow: hidden; padding-top: 0.04em; white-space: nowrap; }
+.hero__line .word { padding-bottom: 0.04em; }
+/* role lockup: same display voice as the name, sized off it at runtime */
+.hero__line--roles {
+  font-size: min(20rem, 11vw);
+  line-height: 0.9;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--fg);
+  padding-top: 0.3em;
+  padding-left: clamp(0px, 7vw, 12vw);
+}
+/* the name is hollow type: it reads as outline at rest and fills under the cursor.
+   the extra bottom padding clears the centred stroke off the reveal mask (the
+   negative margin keeps the layout identical); intro chars sit below the box, so
+   nothing leaks during the entrance. */
+.hero__line--name {
+  color: var(--fg);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: clamp(1.5px, 0.009em, 4.5px);
+  -webkit-text-stroke-color: rgba(245, 245, 245, 0.5);
+  padding-bottom: 4px;
+  margin-bottom: -4px;
+}
+.hero__line--name .char {
+  transition: -webkit-text-fill-color 0.16s linear, -webkit-text-stroke-color 0.16s linear;
+}
+.hero__foot { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.1fr) auto auto; gap: 2rem; align-items: end; }
+.hero__lede { max-width: 34ch; font-size: clamp(1.05rem, 1.5vw, 1.45rem); line-height: 1.3; }
+.hero__cta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.hero__cue { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+.hero__cue-line { width: 1px; height: 56px; background: var(--fg); transform-origin: top; animation: cue 2.2s var(--ease-io) infinite 2.5s; }
+@keyframes cue { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; padding: 1rem 1.6rem; border-radius: 999px;
+  font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--fg);
+  position: relative; overflow: hidden; transition: color 0.4s, background-color 0.4s, border-color 0.4s; will-change: transform;
+}
+.btn--solid { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.btn--solid:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.btn--ghost:hover { background: var(--fg); color: var(--bg); }
+
+@media (max-width: 899px) {
+  .hero__foot { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hero__cue { display: none; }
+  .hero__line--roles { padding-left: 0; }
+}
+@media (max-width: 767px) {
+  .hero__grid { grid-template-columns: repeat(4, 1fr); }
+  .hero__grid span:nth-child(n+5) { display: none; }
+  .hero__grid span:nth-child(4) { border-right: 1px solid var(--line); }
+}

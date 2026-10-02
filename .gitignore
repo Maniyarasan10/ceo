@@ -1,0 +1,64 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Build output
+dist/
+dist-single/
+build/
+.vite/
+*.local
+
+# Cache
+.cache/
+.temp/
+.tmp/
+.eslintcache
+.stylelintcache
+.swc/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Deployment
+.vercel
+.netlify
+.firebase/
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# System
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Unreferenced working files kept locally, not published (~8MB).
+# Nothing in src/ or index.html imports these; delete them if unwanted.
+/image.png
+/p1.png
+/p2.png
+/p3.png
+
+# TypeScript (unused here, kept so generated configs stay ignored if added later)
+*.tsbuildinfo
+tsconfig.tsbuildinfo
