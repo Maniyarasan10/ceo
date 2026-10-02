@@ -37,7 +37,7 @@
   .about__statement {
     min-height: 100svh;
     padding: clamp(4.5rem, 12svh, 6.5rem) var(--pad) clamp(2rem, 5svh, 2.5rem);
-    justify-content: flex-start; gap: clamp(2.25rem, 6svh, 7vh);
+    justify-content: flex-start; gap: clamp(3rem, 8svh, 8vh);
   }
   .about__sub { margin-top: auto; align-self: flex-start; }
 }

@@ -11,7 +11,7 @@
 .services__row.is-on .services__desc { opacity: 1; }
 .services__row.is-on .services__n { color: var(--accent); }
 @media (max-width: 767px) {
-  .services__row { grid-template-columns: 2rem 1fr; }
-  .services__desc { grid-column: 2; opacity: 1; }
+  .services__row { grid-template-columns: 2rem 1fr; row-gap: 1.75rem; }
+  .services__desc { grid-column: 2; opacity: 1; gap: 1rem; }
   .services__name { font-size: clamp(2.4rem, 12vw, 4rem); }
 }
