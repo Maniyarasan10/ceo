@@ -1,6 +1,9 @@
 .contact { position: relative; overflow: hidden; background: radial-gradient(circle 38vmax at var(--mx, 50%) var(--my, 60%), color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%); }
 .contact__inner { padding: 8vh var(--pad) 10vh; display: grid; gap: 8vh; }
-.contact__title { font-size: clamp(3.6rem, 18.5vw, 26rem); line-height: 0.82; font-weight: 900; }
+/* Size the headline from the usable width (viewport minus the section's side padding),
+   not raw vw. The longest line "MEANINGFUL." is ~4.93em wide, so dividing by 5.2 leaves
+   a safety margin and stops the line being clipped on narrow phones. */
+.contact__title { font-size: clamp(3.4rem, calc((100vw - 2 * var(--pad)) / 5.2), 26rem); line-height: 0.82; font-weight: 900; }
 .contact__line { display: block; white-space: nowrap; }
 .contact__line .word { overflow: visible; padding: 0; margin: 0; }
 .contact__line .char { color: color-mix(in srgb, var(--accent) calc(var(--hot, 0) * 100%), var(--fg)); transition: color 0.12s linear; }
