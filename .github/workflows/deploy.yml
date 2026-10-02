@@ -20,9 +20,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 20
           cache: npm
@@ -44,6 +44,10 @@ jobs:
             || echo "note: no inlined base found (harmless)"
 
       - uses: actions/configure-pages@v5
+        with:
+          # Creates/attaches the Pages site if it does not exist yet. Without this
+          # the step fails with "Get Pages site failed - Not Found" on a fresh repo.
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
