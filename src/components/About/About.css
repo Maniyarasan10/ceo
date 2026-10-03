@@ -47,6 +47,12 @@
   .about__big .space { width: 0.34em; }
 }
 
+/* Phones: looser leading on the statement. At 1em the wrapped display lines were still
+   visually touching; 1.2em separates them and the statement still clears the viewport. */
+@media (max-width: 767px) {
+  .about__big { line-height: 1.2; }
+}
+
 /* very narrow phones: the display size has to give, or the statement runs past the fold */
 @media (max-width: 360px) {
   .about__big { font-size: clamp(2.7rem, 12.5vw, 13rem); }
