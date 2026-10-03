@@ -40,6 +40,11 @@
     justify-content: flex-start; gap: clamp(3rem, 8svh, 8vh);
   }
   .about__sub { margin-top: auto; align-self: flex-start; }
+  /* The condensed display face sits tight at 0.88em leading, which reads as one block
+     on phones; give the wrapped lines and the word gaps real breathing room. */
+  .about__big { line-height: 1; }
+  .about__big .word { margin-right: 0.24em; }
+  .about__big .space { width: 0.34em; }
 }
 
 /* very narrow phones: the display size has to give, or the statement runs past the fold */
