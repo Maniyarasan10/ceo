@@ -74,7 +74,6 @@ export default function ProjectCard({ project, index, onOpen, onHover }) {
       <p className="pcard__desc">{project.short}</p>
       <ul className="pcard__tags mono">
         {project.tags.map((t) => <li key={t}>{t}</li>)}
-        <li className="pcard__role">{project.role}</li>
       </ul>
     </article>
   );
