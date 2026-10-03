@@ -6,6 +6,7 @@ export const profile = {
   titles: 'CEO · Co-Founder',
   company: 'Problem Solving Mind',
   companyShort: 'PSM',
+  companyUrl: 'https://www.problemsolvingmind.com/',
   field: 'Computer Science student · Developer · Founder',
   email: 'ceo@problemsolvingmind.com',
   year: 2026,

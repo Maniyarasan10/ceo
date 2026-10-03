@@ -127,6 +127,9 @@ export default function Hero({ ready }) {
         <div className="hero__cta" data-hero-fade>
           <button className="btn btn--solid" data-magnetic="0.4" onClick={() => navigateTo('work')}>View work</button>
           <a className="btn btn--ghost" data-magnetic="0.4" href={`mailto:${profile.email}`}>Start a project</a>
+          <a className="btn btn--accent" data-magnetic="0.4" href={profile.companyUrl} target="_blank" rel="noopener noreferrer">
+            Visit company site <span className="hero__cta-arrow" aria-hidden="true">↗</span>
+          </a>
         </div>
         <div className="hero__cue mono" data-hero-fade aria-hidden="true">
           <span>Scroll</span><i className="hero__cue-line" />

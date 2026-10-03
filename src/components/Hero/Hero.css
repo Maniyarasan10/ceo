@@ -65,6 +65,10 @@
 .btn--solid { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 .btn--solid:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 .btn--ghost:hover { background: var(--fg); color: var(--bg); }
+.btn--accent { color: var(--accent); border-color: var(--accent); }
+.btn--accent:hover { background: var(--accent); color: var(--on-accent); }
+.hero__cta-arrow { display: inline-block; margin-left: 0.4em; transition: transform 0.4s var(--ease-io); }
+.btn--accent:hover .hero__cta-arrow { transform: translate(0.15em, -0.15em); }
 
 @media (max-width: 899px) {
   .hero__foot { grid-template-columns: 1fr; gap: 1.5rem; }
