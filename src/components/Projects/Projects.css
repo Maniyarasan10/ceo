@@ -32,6 +32,14 @@
   .pcard__tags li:not(.pcard__role) { padding: 0.45rem 0.7rem; }
 }
 
+/* Pinned desktop layout only: the card is centred in a 100svh track and the section's
+   progress rule sits 2.4rem above the bottom. Tall cards (e.g. EYD with its five tags
+   wrapping to two rows) used to extend down onto that rule on shorter screens. Cap the
+   artwork so the whole card always clears both the rule and the pin's clipped edges. */
+@media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .pcard__media { max-height: calc(100svh - 24rem); }
+}
+
 /* stacked layout: small screens + reduced motion (matches the JS matchMedia) */
 @media (max-width: 899px), (prefers-reduced-motion: reduce) {
   .projects__pin { display: block; overflow: visible; }
