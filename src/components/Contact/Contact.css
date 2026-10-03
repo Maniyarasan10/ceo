@@ -19,6 +19,8 @@
 .contact__link { font-size: clamp(2.2rem, 5vw, 5rem); line-height: 1; display: inline-flex; align-items: center; min-height: 44px; }
 @media (max-width: 767px) {
   .contact .sec-head { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
-  .contact__line + .contact__line { margin-top: 0.07em; }
+  /* Phones: the three display lines sat at 0.82em leading and read as one block. */
+  .contact__title { line-height: 1; }
+  .contact__line + .contact__line { margin-top: 0.1em; }
   .contact__row { flex-direction: column; align-items: flex-start; } .contact__links { text-align: left; }
 }

@@ -51,6 +51,7 @@
   .nav__burger { display: inline-flex; align-items: center; justify-content: center; }
   .menu { display: flex; }
   .menu__link { font-size: min(clamp(2.9rem, 15.5vw, 8rem), 14svh); min-height: 44px; }
-  .menu ul { gap: 0.1rem; }
+  /* Room between the menu rows so the oversized links don't crowd each other. */
+  .menu ul { gap: clamp(0.9rem, 5vw, 1.75rem); }
   .menu { padding-top: 5.5rem; padding-bottom: max(var(--pad), env(safe-area-inset-bottom)); overflow-y: auto; overscroll-behavior: contain; }
 }
