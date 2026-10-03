@@ -3,7 +3,7 @@
 .about__meta { display: flex; justify-content: space-between; }
 .about__big { font-size: clamp(3.2rem, 11.5vw, 13rem); line-height: 0.88; max-width: 14ch; }
 .about__big .word { display: inline-block; margin-right: 0.18em; padding-right: 0; overflow: visible; }
-.about__big .char { display: inline-block; color: color-mix(in srgb, var(--accent) calc(var(--hot, 0) * 100%), var(--fg)); transition: color 0.12s linear; will-change: transform; }
+.about__big .char { display: inline-block; color: color-mix(in srgb, var(--accent) calc(var(--hot, 0) * 100%), var(--fg)); transition: color 0.06s linear; will-change: transform, color; }
 .about__sub { max-width: 46ch; font-size: clamp(1rem, 1.4vw, 1.3rem); color: var(--mute); align-self: flex-end; }
 
 .about__domains { overflow: hidden; padding: 4vh 0; border-block: 1px solid var(--line); display: grid; gap: 0.5rem; }

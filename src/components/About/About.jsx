@@ -61,10 +61,18 @@ export default function About() {
         });
       });
 
-      const moveLetters = (event) => {
-        const box = statement.getBoundingClientRect();
-        const mx = event.clientX - box.left;
-        const my = event.clientY - box.top;
+      // Pointer events fire far faster than the display can repaint. Reading each
+      // glyph's box forces a reflow, so doing it per raw event queues up work and the
+      // accent "glow" visibly trails the cursor. Coalesce to one pass per frame (like
+      // the Contact statement) so the highlight tracks the pointer immediately.
+      let raf = 0;
+      let pending = null;
+      const paint = () => {
+        raf = 0;
+        if (!pending) return;
+        const mx = pending.clientX;
+        const my = pending.clientY;
+        pending = null;
         chars.current.forEach((c) => {
           const r = c.getBoundingClientRect();
           const cx = r.left + r.width / 2;
@@ -79,14 +87,20 @@ export default function About() {
             y: -k * 16,
             scale: 1 + k * 0.18,
             skewX: -(dx / R) * 12 * k,
-            duration: 0.45,
+            duration: 0.3,
             ease: 'power3.out',
             overwrite: 'auto',
           });
         });
       };
+      const moveLetters = (event) => {
+        pending = event;
+        if (!raf) raf = requestAnimationFrame(paint);
+      };
 
       const resetLetters = () => {
+        pending = null;
+        if (raf) { cancelAnimationFrame(raf); raf = 0; }
         chars.current.forEach((c) => {
           c.style.setProperty('--hot', '0');
         });
@@ -103,6 +117,7 @@ export default function About() {
       statement.addEventListener('pointermove', moveLetters);
       statement.addEventListener('pointerleave', resetLetters);
       return () => {
+        if (raf) cancelAnimationFrame(raf);
         statement.removeEventListener('pointermove', moveLetters);
         statement.removeEventListener('pointerleave', resetLetters);
       };
