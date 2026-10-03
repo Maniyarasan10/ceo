@@ -2,10 +2,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  // GitHub Pages serves the repo from /<repo>/, so the build has to emit asset URLs
-  // under that prefix or every JS/CSS/image request 404s. Only applied in CI -
-  // local dev and `vite preview` keep serving from the root.
-  base: process.env.GITHUB_ACTIONS ? '/ceo/' : '/',
+  // The repo's GitHub Pages site uses the custom domain ceo.problemsolvingmind.com,
+  // which serves at the domain root while the /ceo/ project URL redirects there.
+  // A relative base makes asset URLs resolve against wherever the HTML is served
+  // from, so the same build works at the domain root and under /ceo/ alike.
+  base: './',
   plugins: [react()],
   build: {
     target: 'es2020',

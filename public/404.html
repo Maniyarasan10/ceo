@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Redirecting</title>
-<meta http-equiv="refresh" content="0; url=/ceo/">
-<link rel="canonical" href="/ceo/">
+<meta http-equiv="refresh" content="0; url=./">
+<link rel="canonical" href="./">
 <style>
   html, body { margin: 0; height: 100%; background: #0b0b0b; color: #e8e6e1;
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
@@ -19,11 +19,14 @@
        fires for a mistyped or stale URL. -->
   <main>
     <p>That page does not exist.</p>
-    <p><a href="/ceo/">Back to the portfolio</a></p>
+    <p><a href="./">Back to the portfolio</a></p>
   </main>
   <script>
-    var target = '/ceo/' + (location.hash || '');
-    location.replace(target);
+    // Send the visitor back to the single page, preserving the hash. Works whether
+    // the site is served from the domain root or from the /ceo/ project path.
+    var path = location.pathname.replace(/\/+$/, '');
+    var base = path.replace(/\/[^/]*$/, '') + '/';
+    location.replace(location.origin + base + (location.hash || ''));
   </script>
 </body>
 </html>
