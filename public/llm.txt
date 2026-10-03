@@ -1,0 +1,64 @@
+# llm.txt (alias of llms.txt) — see https://maniyarasan10.github.io/ceo/llms.txt
+#
+# Maniyarasan S. — Developer, CEO & Co-Founder
+
+> Maniyarasan S. is a developer, Computer Science & Engineering student, and the CEO & Co-Founder of Problem Solving Mind (PSM) — a product-focused technology company based in Pondicherry, Tamil Nadu, India, working worldwide. This is his personal portfolio, which also documents the company he co-founded and the work it does.
+
+Maniyarasan builds digital products, custom software, AI systems and automation. His portfolio covers product engineering (web and mobile applications), artificial intelligence, intelligent systems, hardware/IoT exploration, and technology-driven ventures through Problem Solving Mind.
+
+- Owner: Maniyarasan S.
+- Roles: Developer · CEO · Co-Founder
+- Company: Problem Solving Mind (PSM)
+- Field: Computer Science & Engineering student · Developer · Founder
+- Location: Pondicherry, Tamil Nadu, India — working worldwide
+- Website (portfolio): https://maniyarasan10.github.io/ceo/
+- Website (company): https://www.problemsolvingmind.com
+- Contact: ceo@problemsolvingmind.com
+
+## Company — Problem Solving Mind (PSM)
+
+Problem Solving Mind (short: PSM) is a product-focused technology company building practical software, AI-powered solutions and connected systems for real-world problems. PSM builds its own technology products and also engineers custom software and integrations for organizations.
+
+- Name: Problem Solving Mind (short: PSM)
+- Slogan / tagline: Building Products. Solving Problems.
+- Location: Pondicherry, Tamil Nadu, India — working worldwide
+- Team size: 20+ people
+- Mission: Turn real-world problems into technology that creates opportunity.
+- Vision: A global company that solves problems and creates livelihoods through innovation.
+- Approach: "We don't start with technology. We start with the problem."
+- Process (6 steps): Problems → Understand → Design → Build → Integrate → Scale
+- Company website: https://www.problemsolvingmind.com
+- Contact: hello@problemsolvingmind.com | contact@problemsolvingmind.com | founder@problemsolving.com | ceo@problemsolving.com
+- Phone / WhatsApp: +91 93602 07861
+- LinkedIn: https://www.linkedin.com/company/problem-solving-minds/
+- Instagram: https://www.instagram.com/problemsolvingmind
+
+## People
+
+- Prasanna Venkatesan R. — Founder & Managing Director (https://www.problemsolvingmind.com/about/founders/prasanna-venkatesan/)
+- Maniyarasan S. — Co-Founder & CEO (https://www.problemsolvingmind.com/about/founders/maniyarasan/)
+
+## Services
+
+- Custom software development
+- AI & business automation
+- ERP & CRM integration
+- Web & mobile applications
+- Digital transformation
+
+## Products (in development)
+
+- EYD — Explore Your Dreams (real estate & construction)
+- LECOM (communication & learning)
+- BOOWA (hyperlocal delivery)
+- Aura (proactive healthcare)
+- Founder OS (founder productivity)
+
+## Links
+
+- Portfolio: https://maniyarasan10.github.io/ceo/
+- GitHub: https://github.com/Maniyarasan10/
+- LinkedIn: https://www.linkedin.com/in/maniyarasan-s-0275b5291
+- Instagram: https://www.instagram.com/maniyarasan_09
+
+# Last reviewed: 2026-10-03.
