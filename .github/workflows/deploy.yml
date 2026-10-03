@@ -31,17 +31,19 @@ jobs:
         run: npm ci
 
       - name: Build
-        # GITHUB_ACTIONS is what flips vite.config.js into base: '/ceo/'
         run: npm run build
-        env:
-          GITHUB_ACTIONS: 'true'
 
-      - name: Verify asset URLs use the /ceo/ prefix
+      - name: Verify asset URLs are relative
+        # The site is served from the custom domain root (ceo.problemsolvingmind.com),
+        # so asset URLs must stay relative (./assets/...). A hardcoded /ceo/ prefix
+        # makes every asset 404 on the domain root and renders a blank page.
         run: |
-          grep -q '"/ceo/assets/' dist/index.html \
-            || (echo "FAIL: built index.html has no /ceo/ asset prefix" && exit 1)
-          grep -q '"base":"/ceo/"' dist/index.html \
-            || echo "note: no inlined base found (harmless)"
+          grep -q '\./assets/' dist/index.html \
+            || (echo "FAIL: built index.html has no relative ./assets/ asset URLs" && exit 1)
+          if grep -q '/ceo/assets/' dist/index.html; then
+            echo "FAIL: built index.html hardcodes /ceo/assets/, which breaks the custom domain"
+            exit 1
+          fi
 
       - uses: actions/configure-pages@v5
         with:
